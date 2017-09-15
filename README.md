@@ -10,6 +10,7 @@
 - Component or Directive flavors
 - Accept copy/paste
 - Editable
+- Min/Max Range.
 
 For other types of mask, use [vue-the-mask](https://vuejs-tips.github.io/vue-the-mask)
 
@@ -49,7 +50,9 @@ Vue.use(money, {precision: 4})
           prefix: 'R$ ',
           suffix: ' #',
           precision: 2,
-          masked: false
+          masked: false,
+          min: 0,
+          max: 10000
         }
       }
     }
@@ -79,7 +82,7 @@ Must use `vmodel.lazy` to bind works properly.
           prefix: 'R$ ',
           suffix: ' #',
           precision: 2,
-          masked: false /* doesn't work with directive */
+          masked: false /* doesn't work with directive */,
         }
       }
     },
@@ -99,6 +102,8 @@ Must use `vmodel.lazy` to bind works properly.
 | prefix    | false    | String  | ""      | Currency symbol followed by a Space, like "R$ "         |
 | suffix    | false    | String  | ""      | Percentage for example: " %"                            |
 | masked    | false    | Boolean | false   | If the component output should include the mask or not  |
+| min       | false    | Number  | null    | Limit min value, when null no limit                     |
+| max       | false    | Number  | null    | Limit max value, when null no limit                     |
 
 ### References
 

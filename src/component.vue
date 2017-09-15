@@ -2,7 +2,7 @@
   <input type="tel"
          :value="formattedValue"
          @change="change"
-         v-money="{precision, decimal, thousands, prefix, suffix}"
+         v-money="{precision, decimal, thousands, prefix, suffix, min, max}"
          class="v-money" />
 </template>
 
@@ -42,6 +42,14 @@ export default {
     suffix: {
       type: String,
       default: () => defaults.suffix
+    },
+    min: {
+      type: Number,
+      default: () => defaults.min
+    },
+    max: {
+      type: Number,
+      default: () => defaults.max
     }
   },
 
@@ -67,6 +75,12 @@ export default {
 
   methods: {
     change (evt) {
+        var unMaskedValue = unformat(evt.target.value, this.precision)
+        if (this.min !== null && unMaskedValue < this.min) {
+            evt.target.value = format(this.min, this.$props)
+        } else if (this.max !== null && unMaskedValue > this.max) {
+            evt.target.value = format(this.max, this.$props)
+        }
       this.$emit('input', this.masked ? evt.target.value : unformat(evt.target.value, this.precision))
     }
   }

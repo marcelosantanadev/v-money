@@ -75,6 +75,21 @@
     <div class="column col-2 col-sm-3">
       <input class="form-input" type="text" id="thousands" v-model="config.thousands" />
     </div>
+
+    <div class="column col-2 col-sm-3">
+      <label class="form-label" for="thousands">Min</label>
+    </div>
+    <div class="column col-2 col-sm-3">
+      <input class="form-input" type="number" id="minValue" v-model.number="config.min" />
+    </div>
+
+    <div class="column col-2 col-sm-3">
+      <label class="form-label" for="thousands">Max</label>
+    </div>
+    <div class="column col-2 col-sm-3">
+      <input class="form-input" type="number" id="maxValue" v-model.number="config.max" />
+    </div>
+
     <div class="column col-4 col-sm-5">
       <div class="form-group">
         <label class="form-checkbox">
@@ -113,7 +128,7 @@ export default {
       price: 1234.5,
       priceDirective: 5432.1,
       priceVuetify: 6789.10,
-      config: {decimal: ',', thousands: '.', prefix: 'R$ ', suffix: ' #', precision: 2, masked: false}
+      config: {decimal: ',', thousands: '.', prefix: 'R$ ', suffix: ' #', precision: 2, masked: false, min: 0, max: 100}
     }
   }
 }
